@@ -12,7 +12,7 @@ import java.io.Serial;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet(name = "uranaiServlet", value = "/uranai-servlet")
+@WebServlet(name = "UranaiServlet", value = "/uranai-servlet")
 public class UranaiServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;

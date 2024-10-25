@@ -10,10 +10,10 @@ public class Employee {
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 }

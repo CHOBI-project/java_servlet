@@ -33,6 +33,22 @@
         <a href="./servletForm.jsp">Fromデータの取得・表示</a>
         <p>jspでフォームを作成・送信/servletで取得データを表示(jsp・servlet)</p>
     </li>
+    <li>
+        <a href="./servlet-forward">処理の転送する</a>
+        <p>処理を他のservlet/jspに転送する(jsp・servlet)</p>
+    </li>
+    <li>
+        <a href="./servlet-request-scope">リクエストスコープ</a>
+        <p>servletで宣言した変数をjspで受け取り表示する(jsp・servlet)</p>
+    </li>
+    <li>
+        <a href="./userInput.jsp">ユーザー登録画面/セッションスコープ</a>
+        <p>RegisterUserが保持データと遷移先を選択している(java・servlet・jsp)</p>
+    </li>
+    <li>
+        <a href="">アプリケーションスコープ</a>
+        <p>RegisterUserが保持データと遷移先を選択している(java・servlet・jsp)</p>
+    </li>
 </ul>
 </body>
 </html>
