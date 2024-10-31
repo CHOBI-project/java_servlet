@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>ユーザー登録画面</h1>
-    <form action="./servlet-form" method="post">
+    <form action="./ServletForward" method="post">
         <label>name: <input type="text" name="name"></label><br>
         <label>man: <input type="radio" name="gender" value="0"></label><br>
         <label>woman: <input type="radio" name="gender" value="1"></label><br>

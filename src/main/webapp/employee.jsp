@@ -1,4 +1,4 @@
-<%@ page import="io.github.java_servlet.Employee" %>
+<%@ page import="io.github.java_servlet.instance.Employee" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

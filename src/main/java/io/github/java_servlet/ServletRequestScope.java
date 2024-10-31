@@ -1,5 +1,6 @@
 package io.github.java_servlet;
 
+import io.github.java_servlet.instance.Animal;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,7 +13,7 @@ import java.io.Serial;
 
 //[Request Scope]はレスポンスが返されるまで使用可能/フォワードのみ
 
-@WebServlet(name = "ServletRequestScope", value = "/servlet-request-scope")
+@WebServlet("/ServletRequestScope")
 public class ServletRequestScope extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -24,7 +25,7 @@ public class ServletRequestScope extends HttpServlet {
         request.setAttribute("cat", cat);
 
         //フォワード
-        RequestDispatcher dispatcher = request.getRequestDispatcher("servletRequestScope.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("requestScope/servletRequestScope.jsp");
         dispatcher.forward(request, response);
     }
 }
