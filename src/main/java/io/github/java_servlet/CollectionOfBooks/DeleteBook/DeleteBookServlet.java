@@ -16,7 +16,12 @@ public class DeleteBookServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String stringId = request.getParameter("id");
+
+        int id = 0;
+        if (stringId != null && !stringId.isEmpty()) {
+            id = Integer.parseInt(request.getParameter("id"));
+        }
         new BooksDAO().deleteBook(id);
 
         response.sendRedirect("./BookListServlet");

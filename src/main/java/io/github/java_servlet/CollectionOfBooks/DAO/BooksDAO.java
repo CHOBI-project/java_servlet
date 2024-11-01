@@ -171,6 +171,25 @@ public class BooksDAO {
         }
     }
 
+    public void updateBook(Book book) {
+        try (Connection con = DriverManager.getConnection(url, user, pass)) {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            PreparedStatement pst = con.prepareStatement("UPDATE BOOKS SET TITLE = ?, AUTHOR = ?, PUBLISHER = ?, PUBLISH_DATE = ? WHERE ID = ?");
+            pst.setString(1, book.getTitle());
+            pst.setString(2, book.getAuthor());
+            pst.setString(3, book.getPublisher());
+            java.sql.Date sqlDate = new java.sql.Date(book.getGetPublishDate().getTime());
+            pst.setDate(4, sqlDate);
+            pst.setInt(5, book.getId());
+            pst.executeUpdate();
+
+        } catch (ClassNotFoundException e) {
+            throw new IllegalStateException("JDBCドライバーを読み込めませんでした");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void deleteBook(int id) {
         try (Connection con = DriverManager.getConnection(url, user, pass)) {
             Class.forName("com.mysql.cj.jdbc.Driver");

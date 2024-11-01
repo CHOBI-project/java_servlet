@@ -30,7 +30,7 @@
     </p>
     <p>
         <label>
-            出版社 : <input type="text" name="publisher" value="${requestScope.publish}" placeholder="出版社で検索">
+            出版社 : <input type="text" name="publisher" value="${requestScope.publisher}" placeholder="出版社で検索">
         </label>
     </p>
     <input type="submit" value="検索">
