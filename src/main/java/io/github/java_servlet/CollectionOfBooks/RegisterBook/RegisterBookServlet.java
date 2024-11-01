@@ -2,6 +2,7 @@ package io.github.java_servlet.CollectionOfBooks.RegisterBook;
 
 import io.github.java_servlet.CollectionOfBooks.DAO.Book;
 import io.github.java_servlet.CollectionOfBooks.DAO.BooksDAO;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,24 +21,53 @@ public class RegisterBookServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String title =  request.getParameter("title");
+        String title = request.getParameter("title");
         String author = request.getParameter("author");
-        String publish = request.getParameter("publish");
+        String publisher = request.getParameter("publisher");
         String publishDate = request.getParameter("publish-date");
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date publishDateFormat;
-
-        try {
-            publishDateFormat = dateFormat.parse(publishDate);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
+        boolean hasError = false;
+        if (title == null || title.isEmpty()) {
+            request.setAttribute("titleError", "タイトルが入力されていません");
+            hasError = true;
+        }
+        if (author == null || author.isEmpty()) {
+            request.setAttribute("authorError", "著者が入力されていません");
+            hasError = true;
+        }
+        if (publisher == null || publisher.isEmpty()) {
+            request.setAttribute("publisherError", "出版社が入力されていません");
+            hasError = true;
+        }
+        if (publishDate == null || publishDate.isEmpty()) {
+            request.setAttribute("publishDateError", "出版日が入力されていません");
+            hasError = true;
         }
 
-        Book book = new Book(title, author, publish, publishDateFormat);
-        BooksDAO booksDAO = new BooksDAO();
-        booksDAO.Registration(book);
+        if (hasError) {
+            request.setAttribute("title", title);
+            request.setAttribute("author", author);
+            request.setAttribute("publisher", publisher);
+            request.setAttribute("publishDate", publishDate);
 
-        response.sendRedirect("CollectionOfBooks/BookList/BookList.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/ShowRegisterBook/RegisterBook.jsp");
+            dispatcher.forward(request, response);
+            return;
+        }
+
+        Date date;
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            date = formatter.parse(publishDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        Book book = new Book(title, author, publisher, date);
+        BooksDAO booksDAO = new BooksDAO();
+        booksDAO.registration(book);
+
+        response.sendRedirect("./BookListServlet");
     }
 }

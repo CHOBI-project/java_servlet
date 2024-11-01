@@ -36,5 +36,5 @@ public class Book implements Serializable {
     public String getTitle() { return title; }
     public String getAuthor() { return author; }
     public String getPublisher() { return publisher; }
-    public java.sql.Date getGetPublishDate() { return (java.sql.Date) getPublishDate; }
+    public Date getGetPublishDate() { return getPublishDate; }
 }

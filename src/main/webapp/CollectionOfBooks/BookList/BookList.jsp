@@ -1,9 +1,7 @@
-<%@ page import="java.util.List" %>
 <%@ page import="io.github.java_servlet.CollectionOfBooks.DAO.Book" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<%
-    List<Book> books = (List<Book>) request.getAttribute("books");
-%>
+<% List<Book> books = (List<Book>) request.getAttribute("books"); %>
 
 <html>
 <head>
@@ -53,13 +51,13 @@
         <th>出版日</th>
     </tr>
 
-    <% for (int i = 0; i < books.size(); i++) { %>
+    <% for (Book book : books) { %>
     <tr>
-        <td><%= books.get(i).getId() %></td>
-        <td><a href="#"><%= books.get(i).getTitle() %></a></td>
-        <td><%= books.get(i).getAuthor() %></td>
-        <td><%= books.get(i).getPublisher() %></td>
-        <td><%= books.get(i).getGetPublishDate() %></td>
+        <td><%= book.getId() %></td>
+        <td><a href="./EditBookServlet?index=<%= book.getId() %>"><%= book.getTitle() %></a></td>
+        <td><%= book.getAuthor() %></td>
+        <td><%= book.getPublisher() %></td>
+        <td><%= book.getGetPublishDate() %></td>
     </tr>
     <% } %>
 </table>
