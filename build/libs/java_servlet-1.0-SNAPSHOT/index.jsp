@@ -61,6 +61,10 @@
         <a href="./ELSaveServlet">EL式</a>
         <p>EL式を使用してscope内の変数を利用する(jsp)</p>
     </li>
+    <li>
+        <a href="./MainMenuServlet">図書館蔵書検索</a>
+        <p>蔵書管理システム</p>
+    </li>
 </ul>
 </body>
 </html>
