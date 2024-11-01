@@ -10,10 +10,10 @@
 <body>
 <h1>蔵書情報更新</h1>
 <div class="errorMsg">
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
+    <p>${requestScope.titleError}</p>
+    <p>${requestScope.authorError}</p>
+    <p>${requestScope.publisherError}</p>
+    <p>${requestScope.publishDateError}</p>
 </div>
 
 <form action="./UpdateBookServlet" method="post">
@@ -37,6 +37,7 @@
             出版日 : <input type="date" name="publish-date" value="${requestScope.publishDate}">
         </label>
     </p>
+    <input type="hidden" name="id" value="${requestScope.id}">
     <input type="submit" value="更新">
 </form>
 
