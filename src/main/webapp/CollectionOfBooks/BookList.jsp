@@ -7,7 +7,7 @@
 <head>
     <title>蔵書一覧画面</title>
     <style>
-        <%@ include file="../style.css" %>
+        <%@ include file="style.css" %>
     </style>
 </head>
 

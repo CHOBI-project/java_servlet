@@ -3,7 +3,7 @@
 <head>
     <title>情報更新画面</title>
     <style>
-        <%@include file="../style.css"%>
+        <%@include file="style.css"%>
     </style>
 </head>
 

@@ -1,4 +1,4 @@
-package io.github.java_servlet.CollectionOfBooks.BookList;
+package io.github.java_servlet.CollectionOfBooks;
 
 import io.github.java_servlet.CollectionOfBooks.DAO.Book;
 import io.github.java_servlet.CollectionOfBooks.DAO.BooksDAO;
@@ -8,8 +8,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.Session;
 
 import java.io.IOException;
 import java.io.Serial;
@@ -25,7 +23,7 @@ public class BookListServlet extends HttpServlet {
         List<Book> books = new BooksDAO().getAllBooks();
         request.setAttribute("books", books);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/BookList/BookList.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/BookList.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -38,9 +36,12 @@ public class BookListServlet extends HttpServlet {
                 (author == null || author.isEmpty()) &&
                 (publisher == null || publisher.isEmpty())) {
 
+            request.setAttribute("title", title);
+            request.setAttribute("author", author);
+            request.setAttribute("publisher", publisher);
             request.setAttribute("errorMsg", "検索条件を入力してください");
             request.setAttribute("books", new BooksDAO().getAllBooks());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/BookList/BookList.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/BookList.jsp");
             dispatcher.forward(request, response);
             return;
         }
@@ -60,12 +61,9 @@ public class BookListServlet extends HttpServlet {
             request.setAttribute("errorMsg", "蔵書が見つかりませんでした。");
         }
 
-        request.setAttribute("title", title);
-        request.setAttribute("author", author);
-        request.setAttribute("publisher", publisher);
         request.setAttribute("books", books);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/BookList/BookList.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/BookList.jsp");
         dispatcher.forward(request, response);
     }
 }

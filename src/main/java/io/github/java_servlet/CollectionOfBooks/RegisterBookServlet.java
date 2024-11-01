@@ -1,4 +1,4 @@
-package io.github.java_servlet.CollectionOfBooks.UpdateBook;
+package io.github.java_servlet.CollectionOfBooks;
 
 import io.github.java_servlet.CollectionOfBooks.DAO.Book;
 import io.github.java_servlet.CollectionOfBooks.DAO.BooksDAO;
@@ -8,7 +8,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.Serial;
@@ -16,13 +15,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet("/UpdateBookServlet")
-public class UpdateBookServlet extends HttpServlet {
+@WebServlet("/RegisterBookServlet")
+public class RegisterBookServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String stringId = request.getParameter("id");
         String title = request.getParameter("title");
         String author = request.getParameter("author");
         String publisher = request.getParameter("publisher");
@@ -47,21 +45,14 @@ public class UpdateBookServlet extends HttpServlet {
         }
 
         if (hasError) {
-            request.setAttribute("id", stringId);
             request.setAttribute("title", title);
             request.setAttribute("author", author);
             request.setAttribute("publisher", publisher);
             request.setAttribute("publishDate", publishDate);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/EditBook/EditBook.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/RegisterBook.jsp");
             dispatcher.forward(request, response);
-            System.out.println("UpdateBookServlet: 更新ができませんでした");
             return;
-        }
-
-        int id = 0;
-        if (stringId != null && !stringId.isEmpty()) {
-            id = Integer.parseInt(stringId);
         }
 
         Date date;
@@ -73,11 +64,9 @@ public class UpdateBookServlet extends HttpServlet {
             return;
         }
 
-        Book book = new Book(id, title, author, publisher, date);
+        Book book = new Book(title, author, publisher, date);
         BooksDAO booksDAO = new BooksDAO();
-        booksDAO.updateBook(book);
-
-        System.out.println("UpdateBookServlet: 更新が完了しました");
+        booksDAO.registration(book);
 
         response.sendRedirect("./BookListServlet");
     }

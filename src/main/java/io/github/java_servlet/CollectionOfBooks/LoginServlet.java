@@ -1,4 +1,4 @@
-package io.github.java_servlet.CollectionOfBooks.Login;
+package io.github.java_servlet.CollectionOfBooks;
 
 import io.github.java_servlet.CollectionOfBooks.DAO.UserDAO;
 import jakarta.servlet.RequestDispatcher;
@@ -26,10 +26,10 @@ public class LoginServlet extends HttpServlet {
         try {
             if (userDAO.login(name, pass)) {
                 request.setAttribute("name", name);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/Login/LoginSuccess.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/LoginSuccess.jsp");
                 dispatcher.forward(request, response);
             } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/Login/LoginFalse.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/LoginFalse.jsp");
                 dispatcher.forward(request, response);
             }
         } catch (SQLException e) {
