@@ -3,7 +3,7 @@
 <head>
     <title>ログイン失敗</title>
     <style>
-        <%@ include file="../style.css" %>
+        <%@ include file="style.css" %>
     </style>
 </head>
 

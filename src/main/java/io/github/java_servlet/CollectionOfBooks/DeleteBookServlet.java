@@ -1,4 +1,4 @@
-package io.github.java_servlet.CollectionOfBooks.DeleteBook;
+package io.github.java_servlet.CollectionOfBooks;
 
 import io.github.java_servlet.CollectionOfBooks.DAO.BooksDAO;
 import jakarta.servlet.ServletException;

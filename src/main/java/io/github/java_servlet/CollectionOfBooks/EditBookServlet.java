@@ -1,4 +1,4 @@
-package io.github.java_servlet.CollectionOfBooks.EditBook;
+package io.github.java_servlet.CollectionOfBooks;
 
 import io.github.java_servlet.CollectionOfBooks.DAO.Book;
 import io.github.java_servlet.CollectionOfBooks.DAO.BooksDAO;
@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.Serial;
-import java.util.List;
 
 @WebServlet("/EditBookServlet")
 public class EditBookServlet extends HttpServlet {
@@ -28,7 +27,7 @@ public class EditBookServlet extends HttpServlet {
         request.setAttribute("publisher", book.getPublisher());
         request.setAttribute("publishDate", book.getGetPublishDate());
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/EditBook/EditBook.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/EditBook.jsp");
         dispatcher.forward(request, response);
     }
 }
