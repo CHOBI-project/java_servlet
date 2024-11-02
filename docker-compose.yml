@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  server:
+    container_name: "tomcat"
+    image: tomcat:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./build/libs/java_servlet-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/java_servlet-1.0-SNAPSHOT.war
+    networks:
+      my_network:
+        ipv4_address: 192.168.1.100
+
+  database:
+    container_name: "mysql"
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    networks:
+      my_network:
+        ipv4_address: 192.168.1.101
+    environment:
+      - MYSQL_ROOT_PASSWORD=abc123
+
+networks:
+  my_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
+
+#[192.168.1.0/24]は、192.168.1.1から192.168.1.254までのアドレスを使えるネットワーク範囲

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MuttersDAO {
-    private final String url = "jdbc:mysql://172.17.0.3:3306/dokotubu";
+    private final String url = "jdbc:mysql://database:3306/dokotubu";
     private final String user = "root";
     private final String pass = "abc123";
 

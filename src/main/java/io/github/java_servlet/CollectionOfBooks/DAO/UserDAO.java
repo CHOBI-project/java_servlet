@@ -3,7 +3,7 @@ package io.github.java_servlet.CollectionOfBooks.DAO;
 import java.sql.*;
 
 public class UserDAO {
-    private final String url = "jdbc:mysql://172.17.0.3:3306/CollectionOfBooks";
+    private final String url = "jdbc:mysql://database:3306/CollectionOfBooks";
     private final String user = "root";
     private final String pass = "abc123";
 
