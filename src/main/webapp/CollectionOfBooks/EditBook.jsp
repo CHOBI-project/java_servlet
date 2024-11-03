@@ -42,11 +42,23 @@
 </form>
 
 <p>
-    <button>
-        <a href="./DeleteBookServlet?id=${requestScope.id}" class="button">削除</a>
-    </button>
+    <button id="deleteButton">削除</button>
 </p>
 
 <a href="./BookListServlet">蔵書一覧に戻る</a>
+
+<script>
+    'use strict';
+
+    const deleteButton = document.getElementById("deleteButton");
+
+    deleteButton.addEventListener("click", () => {
+        const flag = confirm("本当に削除しますか?");
+
+        if (flag) {
+            window.location.href = "./DeleteBookServlet?id=${requestScope.id}";
+        }
+    })
+</script>
 </body>
 </html>
