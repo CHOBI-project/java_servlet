@@ -51,14 +51,19 @@
         <th>出版日</th>
     </tr>
 
-    <% for (Book book : books) { %>
-    <tr>
-        <td><%= book.getId() %></td>
-        <td><a href="./EditBookServlet?index=<%= book.getId() %>"><%= book.getTitle() %></a></td>
-        <td><%= book.getAuthor() %></td>
-        <td><%= book.getPublisher() %></td>
-        <td><%= book.getGetPublishDate() %></td>
-    </tr>
+    <%  if (books != null && !books.isEmpty()) {
+            for (Book book : books) { %>
+                <tr>
+                    <td><%= book.getId() %></td>
+                    <td><a href="./EditBookServlet?index=<%= book.getId() %>"><%= book.getTitle() %></a></td>
+                    <td><%= book.getAuthor() %></td>
+                    <td><%= book.getPublisher() %></td>
+                    <td><%= book.getGetPublishDate() %></td>
+                </tr>
+    <% }} else { %>
+                <tr>
+                    <td colspan="5">蔵書が見つかりませんでした。</td>
+                </tr>
     <% } %>
 </table>
 </body>

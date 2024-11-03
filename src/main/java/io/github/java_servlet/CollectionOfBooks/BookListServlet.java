@@ -57,10 +57,6 @@ public class BookListServlet extends HttpServlet {
             books = booksDAO.getBookFromPublish(publisher);
         }
 
-        if (books.isEmpty()) {
-            request.setAttribute("errorMsg", "蔵書が見つかりませんでした。");
-        }
-
         request.setAttribute("books", books);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/BookList.jsp");
