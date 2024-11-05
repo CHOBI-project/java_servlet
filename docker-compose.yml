@@ -7,10 +7,12 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./build/libs/java_servlet-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/java_servlet-1.0-SNAPSHOT.war
+      - ./build/libs:/usr/local/tomcat/webapps
     networks:
       my_network:
         ipv4_address: 192.168.1.100
+    depends_on:
+      - database
 
   database:
     container_name: "mysql"
