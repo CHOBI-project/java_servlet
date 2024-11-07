@@ -20,7 +20,7 @@ public class BookListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Book> books = new BooksDAO().getAllBooks();
+        List<Book> books = new BooksDAO().selectBooks();
         request.setAttribute("books", books);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/BookList.jsp");
@@ -40,7 +40,7 @@ public class BookListServlet extends HttpServlet {
             request.setAttribute("author", author);
             request.setAttribute("publisher", publisher);
             request.setAttribute("errorMsg", "検索条件を入力してください");
-            request.setAttribute("books", new BooksDAO().getAllBooks());
+            request.setAttribute("books", new BooksDAO().selectBooks());
             RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/BookList.jsp");
             dispatcher.forward(request, response);
             return;
@@ -50,11 +50,11 @@ public class BookListServlet extends HttpServlet {
         List<Book> books = new ArrayList<>();
 
         if (title != null && !title.isEmpty()) {
-            books = booksDAO.getBookFromTitle(title);
+            books = booksDAO.selectBooksByTitle(title);
         } else if (author != null && !author.isEmpty()) {
-            books = booksDAO.getBookFromAuthor(author);
+            books = booksDAO.selectBooksByAuthor(author);
         } else {
-            books = booksDAO.getBookFromPublish(publisher);
+            books = booksDAO.selectBooksByPublisher(publisher);
         }
 
         request.setAttribute("books", books);

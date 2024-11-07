@@ -19,7 +19,7 @@ public class EditBookServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("index"));
-        Book book = new BooksDAO().getBookFromID(id);
+        Book book = new BooksDAO().selectBookById(id);
 
         request.setAttribute("id", book.getId());
         request.setAttribute("title", book.getTitle());

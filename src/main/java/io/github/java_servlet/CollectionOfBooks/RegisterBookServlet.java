@@ -66,7 +66,7 @@ public class RegisterBookServlet extends HttpServlet {
 
         Book book = new Book(title, author, publisher, date);
         BooksDAO booksDAO = new BooksDAO();
-        booksDAO.registration(book);
+        booksDAO.insertBook(book);
 
         response.sendRedirect("./BookListServlet");
     }

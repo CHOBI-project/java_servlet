@@ -2,15 +2,14 @@ package io.github.java_servlet.CollectionOfBooks.DAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class BooksDAO {
     private final String url = "jdbc:mysql://database:3306/CollectionOfBooks";
     private final String user = "root";
     private final String pass = "abc123";
 
-    public List<Book> getAllBooks() {
-        List<Book> books = new ArrayList<>();
+    public ArrayList<Book> selectBooks() {
+        ArrayList<Book> books = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection(url, user, pass);) {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -37,7 +36,7 @@ public class BooksDAO {
         return books;
     }
 
-    public Book getBookFromID(int ID) {
+    public Book selectBookById(int ID) {
         Book book = null;
 
         try (Connection con = DriverManager.getConnection(url, user, pass)) {
@@ -65,8 +64,8 @@ public class BooksDAO {
         return book;
     }
 
-    public List<Book> getBookFromTitle(String bookTitle) {
-        List<Book> books = new ArrayList<>();
+    public ArrayList<Book> selectBooksByTitle(String bookTitle) {
+        ArrayList<Book> books = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection(url, user, pass)) {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -94,8 +93,8 @@ public class BooksDAO {
         return books;
     }
 
-    public List<Book> getBookFromAuthor(String bookAuthor) {
-        List<Book> books = new ArrayList<>();
+    public ArrayList<Book> selectBooksByAuthor(String bookAuthor) {
+        ArrayList<Book> books = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection(url, user, pass)) {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -123,8 +122,8 @@ public class BooksDAO {
         return books;
     }
 
-    public List<Book> getBookFromPublish(String bookPublisher) {
-        List<Book> books = new ArrayList<>();
+    public ArrayList<Book> selectBooksByPublisher(String bookPublisher) {
+        ArrayList<Book> books = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection(url, user, pass)) {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -152,7 +151,7 @@ public class BooksDAO {
         return books;
     }
 
-    public void registration(Book book) {
+    public void insertBook(Book book) {
         try (Connection con = DriverManager.getConnection(url, user, pass)) {
             Class.forName("com.mysql.cj.jdbc.Driver");
             PreparedStatement pst = con.prepareStatement("INSERT INTO BOOKS(TITLE, AUTHOR, PUBLISHER, PUBLISH_DATE) VALUES(?, ?, ?, ?)");
