@@ -11,7 +11,7 @@ public class BooksDAO {
     public ArrayList<Book> selectBooks() {
         ArrayList<Book> books = new ArrayList<>();
 
-        try (Connection con = DriverManager.getConnection(url, user, pass);) {
+        try (Connection con = DriverManager.getConnection(url, user, pass)) {
             Class.forName("com.mysql.cj.jdbc.Driver");
             PreparedStatement pst = con.prepareStatement("SELECT ID, TITLE, AUTHOR, PUBLISHER, PUBLISH_DATE FROM BOOKS");
             ResultSet rs = pst.executeQuery();
@@ -28,9 +28,9 @@ public class BooksDAO {
             }
 
         } catch (ClassNotFoundException e) {
-            throw new  IllegalStateException("JDBCドライバーを読み込めませんでした");
+            throw new IllegalStateException("JDBCドライバーを読み込めませんでした");
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("SQLで何らかの問題が発生しました");
         }
 
         return books;
@@ -58,7 +58,7 @@ public class BooksDAO {
         } catch (ClassNotFoundException e) {
             throw new  IllegalStateException("JDBCドライバーを読み込めませんでした");
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("SQLで何らかの問題が発生しました");
         }
 
         return book;
@@ -87,7 +87,7 @@ public class BooksDAO {
         } catch (ClassNotFoundException e) {
             throw new  IllegalStateException("JDBCドライバーを読み込めませんでした");
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("SQLで何らかの問題が発生しました");
         }
 
         return books;
@@ -116,7 +116,7 @@ public class BooksDAO {
         } catch (ClassNotFoundException e) {
             throw new  IllegalStateException("JDBCドライバーを読み込めませんでした");
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("SQLで何らかの問題が発生しました");
         }
 
         return books;
@@ -145,7 +145,7 @@ public class BooksDAO {
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException("JDBCドライバーを読み込めませんでした");
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("SQLで何らかの問題が発生しました");
         }
 
         return books;
@@ -166,7 +166,7 @@ public class BooksDAO {
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException("JDBCドライバーを読み込めませんでした");
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("SQLで何らかの問題が発生しました");
         }
     }
 
@@ -185,7 +185,7 @@ public class BooksDAO {
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException("JDBCドライバーを読み込めませんでした");
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("SQLで何らかの問題が発生しました");
         }
     }
 
@@ -199,7 +199,7 @@ public class BooksDAO {
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException("JDBCドライバーを読み込めませんでした");
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("SQLで何らかの問題が発生しました");
         }
     }
 }

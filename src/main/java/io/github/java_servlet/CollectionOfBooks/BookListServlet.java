@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serial;
 import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/BookListServlet")
 public class BookListServlet extends HttpServlet {
@@ -20,7 +19,7 @@ public class BookListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Book> books = new BooksDAO().selectBooks();
+        ArrayList<Book> books = new BooksDAO().selectBooks();
         request.setAttribute("books", books);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/BookList.jsp");
@@ -47,7 +46,7 @@ public class BookListServlet extends HttpServlet {
         }
 
         BooksDAO booksDAO = new BooksDAO();
-        List<Book> books = new ArrayList<>();
+        ArrayList<Book> books;
 
         if (title != null && !title.isEmpty()) {
             books = booksDAO.selectBooksByTitle(title);

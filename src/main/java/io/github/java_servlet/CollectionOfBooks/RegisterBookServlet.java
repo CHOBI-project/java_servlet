@@ -60,8 +60,7 @@ public class RegisterBookServlet extends HttpServlet {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             date = formatter.parse(publishDate);
         } catch (ParseException e) {
-            e.printStackTrace();
-            return;
+            throw new IllegalArgumentException("形式を確認してください");
         }
 
         Book book = new Book(title, author, publisher, date);
