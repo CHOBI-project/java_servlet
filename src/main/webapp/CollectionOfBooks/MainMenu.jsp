@@ -8,7 +8,11 @@
 </head>
 
 <body>
+
+<%-- タイトル --%>
 <h1>図書館蔵書検索</h1>
+
+<%-- ログインユーザー情報入力欄 --%>
 <form action="./LoginServlet" method="post">
     <P>
         <label>

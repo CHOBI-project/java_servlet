@@ -17,6 +17,7 @@ public class EditBookServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    // 書籍情報を取得して、編集画面に遷移する
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("index"));
         Book book = new BooksDAO().selectBookById(id);

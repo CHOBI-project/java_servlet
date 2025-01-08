@@ -2,6 +2,7 @@ package io.github.java_servlet.CollectionOfBooks.DAO;
 
 import java.sql.*;
 
+// ユーザー情報を取得するDAO
 public class UserDAO {
     private final String url = "jdbc:mysql://database:3306/CollectionOfBooks";
     private final String user = "root";
@@ -12,6 +13,7 @@ public class UserDAO {
         PreparedStatement pst = null;
         ResultSet rs = null;
 
+        // ユーザー名とパスワードを照合
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(url, user, pass);
@@ -38,6 +40,7 @@ public class UserDAO {
             return false;
         }
 
+        // パスワードが一致するか確認
         return pass.equals(password);
     }
 }

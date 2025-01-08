@@ -8,6 +8,7 @@
 </head>
 
 <body>
+<%-- ログイン成功画面(ユーザー表示機能付き) --%>
 <h1>ログインが成功しました</h1>
 <p>ようこそ${requestScope.name}さん</p>
 <a href="./BookListServlet"> 蔵書一覧閲覧画面へ</a>

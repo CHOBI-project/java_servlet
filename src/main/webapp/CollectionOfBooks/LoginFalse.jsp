@@ -8,6 +8,7 @@
 </head>
 
 <body>
+<%-- ログイン失敗画面 --%>
 <p>ログインに失敗しました</p>
 <a href="./MainMenuServlet">ログイン画面へ戻る</a>
 </body>

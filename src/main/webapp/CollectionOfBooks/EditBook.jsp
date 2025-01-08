@@ -9,6 +9,8 @@
 
 <body>
 <h1>蔵書情報更新</h1>
+
+<%-- エラーメッセージ表示 --%>
 <div class="errorMsg">
     <p>${requestScope.titleError}</p>
     <p>${requestScope.authorError}</p>
@@ -16,6 +18,7 @@
     <p>${requestScope.publishDateError}</p>
 </div>
 
+<%-- 書籍の更新情報入力欄 --%>
 <form action="./UpdateBookServlet" method="post">
     <p>
         <label>
@@ -41,12 +44,15 @@
     <input type="submit" value="更新">
 </form>
 
+<%-- この本の削除ボタン --%>
 <p>
     <button id="deleteButton">削除</button>
 </p>
 
+<%-- 蔵書一覧に戻るボタン --%>
 <a href="./BookListServlet">蔵書一覧に戻る</a>
 
+<%-- 削除確認モーダル --%>
 <script>
     'use strict';
 

@@ -8,6 +8,7 @@ public class BooksDAO {
     private final String user = "root";
     private final String pass = "abc123";
 
+    // 書籍全情報を取得する
     public ArrayList<Book> selectBooks() {
         ArrayList<Book> books = new ArrayList<>();
 
@@ -36,6 +37,7 @@ public class BooksDAO {
         return books;
     }
 
+    // 書籍情報をID検索で取得する
     public Book selectBookById(int ID) {
         Book book = null;
 
@@ -64,6 +66,7 @@ public class BooksDAO {
         return book;
     }
 
+    // 書籍情報をタイトル検索で取得する
     public ArrayList<Book> selectBooksByTitle(String bookTitle) {
         ArrayList<Book> books = new ArrayList<>();
 
@@ -93,6 +96,7 @@ public class BooksDAO {
         return books;
     }
 
+    // 書籍情報を著者検索で取得する
     public ArrayList<Book> selectBooksByAuthor(String bookAuthor) {
         ArrayList<Book> books = new ArrayList<>();
 
@@ -122,6 +126,7 @@ public class BooksDAO {
         return books;
     }
 
+    // 書籍情報を出版社検索で取得する
     public ArrayList<Book> selectBooksByPublisher(String bookPublisher) {
         ArrayList<Book> books = new ArrayList<>();
 
@@ -151,6 +156,7 @@ public class BooksDAO {
         return books;
     }
 
+    // 書籍情報を登録する
     public void insertBook(Book book) {
         try (Connection con = DriverManager.getConnection(url, user, pass)) {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -170,6 +176,7 @@ public class BooksDAO {
         }
     }
 
+    // 書籍情報を更新する
     public void updateBook(Book book) {
         try (Connection con = DriverManager.getConnection(url, user, pass)) {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -189,6 +196,7 @@ public class BooksDAO {
         }
     }
 
+    // 書籍情報を削除する
     public void deleteBook(int id) {
         try (Connection con = DriverManager.getConnection(url, user, pass)) {
             Class.forName("com.mysql.cj.jdbc.Driver");

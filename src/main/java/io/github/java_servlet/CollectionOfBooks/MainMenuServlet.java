@@ -16,6 +16,7 @@ public class MainMenuServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // CollectionOfBooks/MainMenu.jspへ遷移
         RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/MainMenu.jsp");
         dispatcher.forward(request, response);
     }

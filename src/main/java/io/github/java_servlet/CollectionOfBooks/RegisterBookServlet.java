@@ -20,6 +20,7 @@ public class RegisterBookServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    // 書籍登録情報を取得して、DBに登録する
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String title = request.getParameter("title");
         String author = request.getParameter("author");

@@ -19,13 +19,16 @@ public class BookListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 本の一覧を取得
         ArrayList<Book> books = new BooksDAO().selectBooks();
         request.setAttribute("books", books);
 
+        // BookList.jspに遷移
         RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/BookList.jsp");
         dispatcher.forward(request, response);
     }
 
+    // 検索条件に一致する本の一覧を取得
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String title = request.getParameter("title");
         String author = request.getParameter("author");

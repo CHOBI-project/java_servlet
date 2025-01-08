@@ -12,6 +12,7 @@
 </head>
 
 <body>
+<%-- 蔵書検索機能 --%>
 <h1>蔵書一覧</h1>
 <button>
     <a href="./ShowRegisterBookServlet" class="button">新規蔵書登録</a>
@@ -42,6 +43,7 @@
     <a href="./BookListServlet" class="button">一覧を表示</a>
 </button>
 
+<%-- 検索結果一覧 --%>
 <table border="1">
     <tr>
         <th>ID</th>
@@ -51,6 +53,7 @@
         <th>出版日</th>
     </tr>
 
+<%-- 特定の本のタイトルを選択するとその本の編集画面に遷移する --%>
     <%  if (books != null && !books.isEmpty()) {
             for (Book book : books) { %>
                 <tr>

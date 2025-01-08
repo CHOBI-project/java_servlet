@@ -20,6 +20,7 @@ public class UpdateBookServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    // 書籍情報を取得して、編集画面に遷移する
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String stringId = request.getParameter("id");
         String title = request.getParameter("title");
@@ -71,6 +72,7 @@ public class UpdateBookServlet extends HttpServlet {
             return;
         }
 
+        // 書籍情報を取得して、DBを更新する
         Book book = new Book(id, title, author, publisher, date);
         BooksDAO booksDAO = new BooksDAO();
         booksDAO.updateBook(book);

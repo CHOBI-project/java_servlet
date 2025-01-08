@@ -18,21 +18,27 @@ public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // ユーザー情報取得
         String name = request.getParameter("name");
         String pass = request.getParameter("pass");
 
+        // ログイン処理
         UserDAO userDAO = new UserDAO();
 
+        // ログイン成功時
         try {
             if (userDAO.login(name, pass)) {
+                // ログイン成功時の処理
                 request.setAttribute("name", name);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/LoginSuccess.jsp");
                 dispatcher.forward(request, response);
             } else {
+                // ログイン失敗時の処理
                 RequestDispatcher dispatcher = request.getRequestDispatcher("CollectionOfBooks/LoginFalse.jsp");
                 dispatcher.forward(request, response);
             }
         } catch (SQLException e) {
+            // ログイン失敗時の処理
             throw new RuntimeException(e);
         }
     }

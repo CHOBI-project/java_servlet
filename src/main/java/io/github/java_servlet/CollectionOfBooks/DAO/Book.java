@@ -3,6 +3,7 @@ package io.github.java_servlet.CollectionOfBooks.DAO;
 import java.io.Serializable;
 import java.util.Date;
 
+// 書籍情報を保持するクラス
 public class Book implements Serializable {
     private int id;
     private String title;

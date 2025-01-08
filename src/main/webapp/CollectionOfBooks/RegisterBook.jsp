@@ -9,6 +9,8 @@
 
 <body>
 <h1>新規蔵書登録</h1>
+
+<%-- エラーメッセージ表示 --%>
 <div class="errorMsg">
     <p>${requestScope.titleError}</p>
     <p>${requestScope.authorError}</p>
@@ -16,6 +18,7 @@
     <p>${requestScope.publishDateError}</p>
 </div>
 
+<%-- 書籍登録情報入力欄 --%>
 <form action="./RegisterBookServlet" method="post">
     <p>
         <label>
@@ -40,6 +43,7 @@
     <input type="submit" value="登録">
 </form>
 
+<%-- 蔵書一覧に戻るボタン --%>
 <a href="./BookListServlet">蔵書一覧に戻る</a>
 </body>
 </html>
