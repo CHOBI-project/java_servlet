@@ -48,15 +48,34 @@ public class BookListServlet extends HttpServlet {
             return;
         }
 
-        BooksDAO booksDAO = new BooksDAO();
-        ArrayList<Book> books;
+        ArrayList<Book> books = new ArrayList<>();
 
+        // 入力値ごとにロジックを分岐
         if (title != null && !title.isEmpty()) {
-            books = booksDAO.selectBooksByTitle(title);
-        } else if (author != null && !author.isEmpty()) {
-            books = booksDAO.selectBooksByAuthor(author);
-        } else {
-            books = booksDAO.selectBooksByPublisher(publisher);
+            ArrayList<Book> bookTitle = new BooksDAO().selectBooksByTitle(title);
+            if (bookTitle != null && !bookTitle.isEmpty()) {
+                books.addAll(bookTitle); // 入力値があり、結果が存在する場合に追加
+            } else {
+                books.add(null);
+            }
+        }
+
+        if (author != null && !author.isEmpty()) {
+            ArrayList<Book> bookAuthor = new BooksDAO().selectBooksByAuthor(author);
+            if (bookAuthor != null && !bookAuthor.isEmpty()) {
+                books.addAll(bookAuthor); // 入力値があり、結果が存在する場合に追加
+            } else {
+                books.add(null);
+            }
+        }
+
+        if (publisher != null && !publisher.isEmpty()) {
+            ArrayList<Book> bookPublisher = new BooksDAO().selectBooksByPublisher(publisher);
+            if (bookPublisher != null && !bookPublisher.isEmpty()) {
+                books.addAll(bookPublisher); // 入力値があり、結果が存在する場合に追加
+            } else {
+                books.add(null);
+            }
         }
 
         request.setAttribute("books", books);
@@ -65,3 +84,4 @@ public class BookListServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 }
+

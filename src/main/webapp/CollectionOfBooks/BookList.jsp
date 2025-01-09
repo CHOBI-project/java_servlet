@@ -54,7 +54,7 @@
     </tr>
 
 <%-- 特定の本のタイトルを選択するとその本の編集画面に遷移する --%>
-    <%  if (books != null && !books.isEmpty()) {
+    <%  if (!books.contains(null) && !books.isEmpty()) {
             for (Book book : books) { %>
                 <tr>
                     <td><%= book.getId() %></td>
